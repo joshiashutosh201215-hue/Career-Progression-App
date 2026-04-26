@@ -1,0 +1,16 @@
+John Doe
+Software Engineer
+
+Experience:
+- Developed web applications using Python and Django.
+- Worked on data analysis projects with Pandas and NumPy.
+- Collaborated in agile teams.
+
+Skills:
+- Python
+- SQL
+- Machine Learning
+- Web Development
+
+Education:
+- Bachelor's in Computer Science

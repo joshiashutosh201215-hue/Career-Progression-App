@@ -1,0 +1,8 @@
+roles:
+  - "Software Engineer"
+  - "Data Scientist"
+locations:
+  - "Germany"
+  - "Austria"
+min_match_score: 50
+resume_path: "data/resume.txt"
