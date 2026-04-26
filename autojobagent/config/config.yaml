@@ -4,5 +4,7 @@ roles:
 locations:
   - "Germany"
   - "Austria"
+  - "Switzerland"
+  - "Netherlands"
 min_match_score: 50
 resume_path: "data/resume.txt"
