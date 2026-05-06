@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Embedded Software Architect - Diagnostics and OTA",
+    "company": "Demo Mobility Systems",
+    "link": "https://example.com/jobs/embedded-software-architect",
+    "description": "We are looking for an Embedded Software Architect to lead AUTOSAR ECU integration, diagnostics, UDS, DoIP, CAN, Ethernet, SOME/IP, secure boot, secure flashing, OTA software update architecture, ISO 26262, ISO 24089, and UNECE R155/R156 compliance. German required for supplier and homologation workshops.",
+    "salary": "EUR 90,000 - 115,000",
+    "portal": "Indeed",
+    "search_query": "Embedded Software Architect",
+    "location": "Munich"
+  },
+  {
+    "title": "Computer Vision Engineer - Edge AI",
+    "company": "Demo Perception Lab",
+    "link": "https://example.com/jobs/computer-vision-engineer",
+    "description": "Build edge AI perception prototypes using Python, PyTorch, OpenCV, YOLO, Docker, Linux, and GPU benchmarking. Experience with embedded deployment, real-time constraints, and cross-functional engineering teams is helpful.",
+    "salary": "EUR 75,000 - 95,000",
+    "portal": "LinkedIn",
+    "search_query": "Computer Vision Engineer",
+    "location": "Berlin"
+  },
+  {
+    "title": "Frontend Product Engineer",
+    "company": "Demo SaaS Studio",
+    "link": "https://example.com/jobs/frontend-product-engineer",
+    "description": "Develop React and TypeScript interfaces for a SaaS analytics product. The role focuses on design systems, browser performance, GraphQL APIs, and product experimentation. Automotive embedded software experience is not required.",
+    "salary": "EUR 70,000 - 90,000",
+    "portal": "Xing",
+    "search_query": "Frontend Product Engineer",
+    "location": "Germany"
+  }
+]

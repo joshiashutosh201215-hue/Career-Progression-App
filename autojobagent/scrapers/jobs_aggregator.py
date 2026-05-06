@@ -1,8 +1,16 @@
-from scrapers.indeed import scrape_indeed
-from scrapers.xing import scrape_xing
-from scrapers.linkedin import scrape_linkedin
+"""Collect jobs from each configured source and remove duplicates."""
 
-def aggregate_jobs(locations, roles):
+from scrapers.indeed import scrape_indeed
+from scrapers.linkedin import scrape_linkedin
+from scrapers.public_apis import (
+    scrape_arbeitnow,
+    scrape_bundesagentur,
+    scrape_remotive,
+)
+from scrapers.xing import scrape_xing
+
+
+def aggregate_jobs(locations, roles, enabled_portals=None, max_results_per_portal=20):
     """
     Aggregates job listings from all configured scrapers.
 
@@ -14,25 +22,36 @@ def aggregate_jobs(locations, roles):
         list: Combined list of job dictionaries from all sources.
     """
     jobs = []
+    enabled = {portal.lower() for portal in enabled_portals or []}
+    scraper_functions = [
+        ("Indeed", scrape_indeed),
+        ("Arbeitnow", scrape_arbeitnow),
+        ("Bundesagentur", scrape_bundesagentur),
+        ("Remotive", scrape_remotive),
+        ("Xing", scrape_xing),
+        ("LinkedIn", scrape_linkedin),
+    ]
 
-    # Scrape from Indeed
-    indeed_jobs = scrape_indeed(locations, roles)
-    jobs.extend(indeed_jobs)
+    for source_name, scraper in scraper_functions:
+        if enabled and source_name.lower() not in enabled:
+            continue
+        try:
+            source_jobs = scraper(
+                locations,
+                roles,
+                max_results=max_results_per_portal,
+            )
+            jobs.extend(source_jobs)
+            print(f"{source_name}: collected {len(source_jobs)} jobs.")
+        except Exception as exc:
+            print(f"{source_name}: skipped after error: {exc}")
 
-    # Scrape from Xing (placeholder)
-    xing_jobs = scrape_xing(locations, roles)
-    jobs.extend(xing_jobs)
-
-    # Scrape from LinkedIn (safe/placeholder)
-    linkedin_jobs = scrape_linkedin(locations, roles)
-    jobs.extend(linkedin_jobs)
-
-    # Remove duplicates based on link
     unique_jobs = []
     seen_links = set()
     for job in jobs:
-        if job['link'] not in seen_links:
+        link = job.get("link")
+        if link and link not in seen_links:
             unique_jobs.append(job)
-            seen_links.add(job['link'])
+            seen_links.add(link)
 
     return unique_jobs

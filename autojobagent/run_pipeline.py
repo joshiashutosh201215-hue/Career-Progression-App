@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""
-Entry point to run the job search pipeline.
-"""
-from pipeline import run_pipeline
+"""Small executable wrapper around the pipeline CLI."""
+
+from pipeline import main
 
 if __name__ == "__main__":
-    run_pipeline()
+    raise SystemExit(main())

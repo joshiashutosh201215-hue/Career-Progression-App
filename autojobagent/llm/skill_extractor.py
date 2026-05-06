@@ -1,16 +1,18 @@
-import os
-from openai import OpenAI
-from dotenv import load_dotenv
+"""Skill extraction for job descriptions.
 
-# Load environment variables
-load_dotenv()
+The preferred path asks the local Hugging Face instruction model to summarize
+the job requirements.  If that model is not downloaded yet, the deterministic
+keyword fallback keeps the pipeline executable and transparent.
+"""
 
-# Initialize OpenAI client
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+import re
 
-def extract_skills(job_description):
+from llm.model_utils import LocalModelError, extract_keyword_skills, generate_text
+
+
+def extract_skills(job_description, use_model=False):
     """
-    Uses OpenAI's GPT model to extract the top 5 required skills from a job description.
+    Extract the top five required skills from a job description.
 
     Args:
         job_description (str): The job description text.
@@ -18,24 +20,44 @@ def extract_skills(job_description):
     Returns:
         str: Comma-separated string of top 5 skills.
     """
-    prompt = f"""
-    Extract the top 5 most important required skills from the following job description.
-    Focus on technical skills, soft skills, and domain-specific knowledge.
-    Return only a comma-separated list of skills, no additional text.
+    if not job_description:
+        return ""
 
-    Job Description:
-    {job_description}
-    """
-
-    try:
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=100,
-            temperature=0.5
+    if use_model:
+        prompt = (
+            "Extract exactly five required job skills. "
+            "Return only comma-separated skill names, no sentence, no explanation.\n\n"
+            f"Job Description:\n{job_description}\n"
         )
-        skills = response.choices[0].message.content.strip()
-        # Clean up any extra text, assuming it's comma-separated
-        return skills
-    except Exception as e:
-        return f"Error extracting skills: {str(e)}"
+        try:
+            generated = generate_text(prompt, max_new_tokens=80)
+            parsed_skills = _parse_skill_list(generated)
+            if len(parsed_skills) >= 3:
+                return ", ".join(parsed_skills[:5])
+        except LocalModelError:
+            pass
+
+    return ", ".join(extract_keyword_skills(job_description, max_items=5))
+
+
+def _parse_skill_list(generated_text):
+    """Turn a model response into a clean list of short skill labels."""
+    cleaned = generated_text.replace("\n", ",")
+    cleaned = re.sub(r"\b(and|skills?:)\b", ",", cleaned, flags=re.IGNORECASE)
+    skills = []
+
+    for part in re.split(r"[,;|]", cleaned):
+        candidate = re.sub(r"^\s*[-*\d.)]+\s*", "", part).strip()
+        candidate = re.sub(r"\s+", " ", candidate)
+        if 2 <= len(candidate) <= 45 and "job description" not in candidate.lower():
+            skills.append(candidate)
+
+    unique_skills = []
+    seen = set()
+    for skill in skills:
+        key = skill.lower()
+        if key not in seen:
+            seen.add(key)
+            unique_skills.append(skill)
+
+    return unique_skills

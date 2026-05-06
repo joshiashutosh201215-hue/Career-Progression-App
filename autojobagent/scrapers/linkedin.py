@@ -1,4 +1,11 @@
-def scrape_linkedin(locations, roles):
+"""LinkedIn ingestion placeholder.
+
+LinkedIn has strict platform rules and anti-scraping controls, so this module
+stays intentionally conservative until an approved API/manual import path is
+available.
+"""
+
+def scrape_linkedin(locations, roles, max_results=20):
     """
     Safe LinkedIn job ingestion.
     Due to LinkedIn's policies, aggressive scraping is avoided.
@@ -12,7 +19,5 @@ def scrape_linkedin(locations, roles):
     Returns:
         list: Empty list (placeholder).
     """
-    # TODO: Implement safe LinkedIn data ingestion
-    # Options: Use LinkedIn Jobs API (if accessible), manual input, or limited safe scraping
-    # For now, return empty to focus on Indeed
+    _ = (locations, roles, max_results)
     return []

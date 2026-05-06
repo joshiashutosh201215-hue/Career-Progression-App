@@ -1,18 +1,22 @@
-from playwright.sync_api import sync_playwright
+"""Helpers for opening application links without automating form submission."""
+
+import webbrowser
+
 
 def apply_to_job(job_link):
     """
-    Semi-assisted job application using Playwright.
-    Opens the job page in a browser for manual application.
-    Does NOT auto-submit or fill forms.
+    Open a job page for manual application.
+
+    The app deliberately avoids auto-submitting applications.  That keeps the
+    workflow ethical, reviewable, and less likely to violate job-board terms.
 
     Args:
         job_link (str): The URL of the job posting.
+
+    Returns:
+        bool: True if the browser accepted the open request, otherwise False.
     """
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)  # Headless=False to show browser
-        page = browser.new_page()
-        page.goto(job_link)
-        # Wait for user to manually apply
-        input("Press Enter after you have applied manually...")
-        browser.close()
+    if not job_link:
+        return False
+
+    return webbrowser.open_new_tab(job_link)

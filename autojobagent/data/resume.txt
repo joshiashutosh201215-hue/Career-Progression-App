@@ -1,16 +1,67 @@
-John Doe
-Software Engineer
-
-Experience:
-- Developed web applications using Python and Django.
-- Worked on data analysis projects with Pandas and NumPy.
-- Collaborated in agile teams.
-
-Skills:
-- Python
-- SQL
-- Machine Learning
-- Web Development
-
-Education:
-- Bachelor's in Computer Science
+Aashutosh Joshi
+Munich, Germany | +49 1719323825 | ashutosh.joshi56@yahoo.com |
+linkedin.com/in/aashutosh-joshi-958271b7
+Profile Summary
+System & Software Architect with 14+ years of experience in embedded software development
+across automotive and industrial domains. Expertise in AUTOSAR-based software architecture,
+system engineering, and end-to-end system architecture covering diagnostics (UDS, DoIP),
+communication protocols (CAN, Ethernet, SOME/IP), and software update strategies. Strong
+experience in bootloader design (secure boot, secure flashing), ECU integration, and network
+architecture. Proven ability to drive cross-functional alignment across Cybersecurity, Functional
+Safety, backend infrastructure, and vehicle platforms. Working knowledge of ISO 26262, ISO
+24089, and UNECE R155/R156. Currently expanding into AI-based perception systems and edge
+computing.
+Skills
+AUTOSAR Software Architecture, System Engineering, ECU Integration
+Diagnostics: UDS, DoIP | Communication: CAN, Ethernet, SOME/IP
+Bootloader Design, Secure Boot, Secure Flashing
+Tools: Vector DaVinci, PREEvision, Polarion
+Languages: C/C++, Python, MATLAB/Simulink
+Docker, Linux, Git
+Emerging: Computer Vision (YOLO, OpenCV), PyTorch
+Professional Experience
+System Engineer – Holon, Munich (Feb 2026 – Present)
+• Feature Owner for Software Update & Diagnostics, driving SUMS (UNECE R156) compliance
+• End-to-end responsibility for in-vehicle ECU development, integration, and deployment (on-board
+& off-board systems)
+• Lead OTA and OBD update strategies, including UDS over CAN and DoIP implementation
+• Manage suppliers and SUMS providers, ensuring compliance, delivery alignment, and technical
+coordination
+• Coordinate with homologation teams for regulatory approvals, audits, and type certification
+readiness
+• Drive cross-functional activities across cybersecurity, functional safety, backend, and validation
+teams
+• Contribute to secure boot and flashing architecture for safe and reliable software updates
+Technology Architect – Cognizant, Munich (Sep 2021 – Jan 2026)
+• Worked as system architect for Holon (since Jun 2024), contributing to software update and
+diagnostics architecture• Defined bootloader specifications, including secure flashing and update mechanisms
+• Led tool integration for diagnostics and software update workflows
+• Designed end-to-end system architecture covering ECU, communication, and backend
+interactions
+• Developed AUTOSAR-based ECU architectures and diagnostics frameworks (UDS/DoIP)
+• Led ECU integration and validation activities across vehicle programs
+• Defined CAN, Ethernet, SOME/IP communication architectures
+Lead Software Development Engineer – John Deere (Apr 2018 – Sep 2021)
+• Technical leadership and Scrum management
+• J1939/CAN communication architecture
+• AUTOSAR ECU integration and development
+• CI/CD and workflow automation
+Senior Software Engineer – John Deere (Sep 2015 – Mar 2018)
+• Application development using C and Model-Based Design
+• MATLAB/Simulink/Stateflow development
+• Bench and field testing
+• CI/CD using Jenkins, Git, SVN
+Embedded Firmware Developer – Emerson (Mar 2012 – Sep 2015)
+• Embedded firmware development using C/C++
+• Modbus RTU and Fieldbus communication
+• ThreadX RTOS-based development
+• Debugging using GHS tools
+• SCM using IBM Rational ClearCase
+Projects
+• Developed real-time object detection system using YOLOv8 and OpenCV
+• Implemented audio alert system using text-to-speech
+• Built modular architecture and containerized using Docker
+• Performed CPU vs GPU performance benchmarking
+Education
+PG Diploma – Embedded & VLSI Systems (CDAC)
+Bachelor of Engineering – Electronics
