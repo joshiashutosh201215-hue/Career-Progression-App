@@ -1,34 +1,13 @@
 roles:
   - "Embedded Software Engineer"
-  - "Embedded Software Architect"
-  - "AUTOSAR System Engineer"
-  - "Automotive Software Architect"
-  - "Diagnostics Engineer"
-  - "ECU Software Engineer"
-  - "Firmware Engineer"
+  - "Embedded Systems Engineer"
+  - "Embedded software architect"
+  - "Embedded System architect"
+  - "lead software engineer"
 locations:
-  - "Munich"
-  - "Berlin"
   - "Germany"
   - "Austria"
   - "Switzerland"
   - "Netherlands"
-min_match_score: 40
+min_match_score: 50
 resume_path: "data/resume.txt"
-demo_mode: false
-fallback_to_demo: false
-store_low_matches: true
-max_jobs_per_run: 25
-max_results_per_portal: 10
-cover_letter_dir: "cover_letters"
-live_portals:
-  - "Arbeitnow"
-  - "Bundesagentur"
-  - "Remotive"
-  - "Indeed"
-  - "LinkedIn"
-  - "Xing"
-models:
-  embedding: "sentence-transformers/all-MiniLM-L6-v2"
-  generation: "google/flan-t5-small"
-  local_files_only: true
